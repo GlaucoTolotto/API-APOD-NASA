@@ -10,9 +10,27 @@ var data = $("#colocaData").val();
 }
 
 function mostrarImg(obj){
-    $("#imagem").attr("src", obj.url)
+    var linkimg = obj.url
+    var tipomedia = JSON.stringify(obj.media_type)
+    console.log(tipomedia)
+    
     $("h1").html(obj.title)
+
+    
+    if (tipomedia === '"image"') {
+        $("iframe").css("display", "none")
+        $("img").attr("src", linkimg)
+        $("img").css("display", "block")
+    }
+    else{
+        $("img").css("display", "none")
+        $("iframe").attr("src", linkimg);
+        $("iframe").css("width", "640px")
+        $("iframe").css("height", "480px")
+        $("iframe").css("display", "block")
+    }
 }
+
 
 
 
